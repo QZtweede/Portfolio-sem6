@@ -1,5 +1,52 @@
 @import "import";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+//header
+
+body.toolbar-horizontal{
+  &.toolbar-tray-open{
+    .sidebar--toggle{
+      top: 79px;
+    }
+  }
+  .sidebar--toggle{
+    top: 40px;
+  }
+}
+
+.sidebar--toggle{
+  height: 100px;
+  width: 100px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: $primary;
+  border-bottom-left-radius: 999px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sidebar--toggle-icon{
+  padding: 16px;
+  font-size: 32px;
+}
 
 body {
-    background: red;
+    background: $black;
+}
+
+.section--landing {
+  padding: 32px;
+}
+
+header{
+  border-bottom: 1px solid white;
+}
+
+.brand{
+  line-height: 18px;
+  background: $black;
+  width: fit-content;
+  z-index: 1;
+  position: absolute;
 }

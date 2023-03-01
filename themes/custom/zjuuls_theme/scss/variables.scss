@@ -1,6 +1,10 @@
 /* VARIABLES */
 
 // colors
+$primary: #CBD8CD;
+$secondary: #DABECF;
+$black: #252525;
+$white: #fff;
 $primary-shade: rgb(255, 78, 46);
 $primary-light: lighten($primary-shade, 37%);
 $primary-dark: darken($primary-shade, 12%);
