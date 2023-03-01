@@ -5,29 +5,37 @@
 
 body.toolbar-horizontal{
   &.toolbar-tray-open{
-    .sidebar--toggle{
+    .menu{
       top: 79px;
     }
   }
-  .sidebar--toggle{
+  .menu{
     top: 40px;
   }
 }
 
-.sidebar--toggle{
+.menu{
   height: 100px;
   width: 100px;
   position: fixed;
   right: 0;
   top: 0;
   background: $primary;
-  border-bottom-left-radius: 999px;
+  border-bottom-left-radius: 100%;
   display: flex;
   justify-content: flex-end;
   z-index: 3;
+  transition: .4s ease-out;
+
 }
 
-.sidebar--toggle-icon{
+.menu.-active{
+  height: 100vh;
+  width: 100vw;
+  border-bottom-left-radius: 0;
+}
+
+.menu--toggle{
   padding: 16px;
   font-size: 2rem;
   color: $black;
@@ -61,7 +69,7 @@ hr{
 }
 
 .brand{
-  line-height: 18px;
+  line-height: 24px;
   background: $black;
   z-index: 1;
   position: absolute;
@@ -73,7 +81,7 @@ hr{
 .landing-p{
   position: absolute;
   position: absolute;
-  padding-top: 8px;
+  padding-top: 24px;
 }
 
 .img--landing{
@@ -104,6 +112,10 @@ h1.serif{
 
 h1.sans-serif{
   font-size: 6rem;
+}
+
+.serif{
+  font-family: $headings-font-family;
 }
 
 .sans-serif, h3{
@@ -163,4 +175,108 @@ p{
   align-items: flex-end;
   color: $white;
   flex-direction: column;
+}
+
+h2.serif{
+  font-size: 6rem;
+  font-style: italic;
+}
+
+h2{
+  line-height: 80px;
+}
+
+.col--about{
+  padding-top: 64px;
+}
+
+h2 + p{
+  padding-top: 16px;
+}
+
+.about-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.col--about-img{
+  @include make-col(4);
+  @include make-col-offset(2);
+  padding-right: 0;
+  margin-top: -16px;
+}
+
+.col--center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col--bubble{
+  @include make-col(4);
+  height: 300px;
+  background-image: url("/drupal/themes/custom/zjuuls_theme/images/circle.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 64px;
+}
+
+.bubble-text{
+  color: $primary;
+  text-align: center;
+}
+
+.link--big{
+  font-style: italic;
+  position: absolute;
+  padding-top: 64px;
+}
+
+.bi-arrow-up-right-circle{
+  font-size: 4em;
+  position: absolute;
+  margin-left: 880px;
+  margin-bottom: 160px;
+  color: $secondary;
+}
+
+.section--link{
+  padding-bottom: 128px;
+}
+
+footer{
+  border-top: 1px solid $off-white;
+  margin: 0 16px 0 16px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.copyright,
+.socials{
+  @include make-col(3);
+}
+
+.socials{
+  justify-content: flex-end;
+  &>a{
+    padding-left: 8px;
+    font-size: 1.5em;
+    color: $off-white;
+  }
+}
+
+.footer-item{
+  display: flex;
+  align-items: center;
+}
+
+.footer-links{
+  justify-content: center;
+  @include make-col(6)
 }
