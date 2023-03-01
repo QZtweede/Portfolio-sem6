@@ -24,11 +24,13 @@ body.toolbar-horizontal{
   border-bottom-left-radius: 999px;
   display: flex;
   justify-content: flex-end;
+  z-index: 3;
 }
 
 .sidebar--toggle-icon{
   padding: 16px;
-  font-size: 32px;
+  font-size: 2rem;
+  color: $black;
 }
 
 body {
@@ -36,17 +38,129 @@ body {
 }
 
 .section--landing {
-  padding: 32px;
+  margin: 16px 16px 128px 16px;
+  height: calc(100vh - 80px);
+  position: relative;
+}
+
+.container--landing{
+  height: 100%;
+  .row,
+  .col--half{
+    height: 100%;
+  }
 }
 
 header{
-  border-bottom: 1px solid white;
+  margin-top: 48px;
+  border-bottom: 1px solid $off-white;
+}
+
+hr{
+  opacity: .5;
 }
 
 .brand{
   line-height: 18px;
   background: $black;
-  width: fit-content;
   z-index: 1;
   position: absolute;
+  top: -32px;
+  left: 0;
+  padding-right: 4px;
+}
+
+.landing-p{
+  position: absolute;
+  position: absolute;
+  padding-top: 8px;
+}
+
+.img--landing{
+  height: 100%;
+  object-fit: cover;
+  width: calc(50vw - 12px);
+}
+
+.col--half{
+  @include make-col-ready();
+  @include make-col(6);
+}
+
+.col--landing{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1{
+  line-height: $h1-line-height;
+}
+
+h1.serif{
+  font-weight: 600;
+  font-style: italic;
+}
+
+h1.sans-serif{
+  font-size: 6rem;
+}
+
+.sans-serif, h3{
+  font-family: $font-family-sans-serif-2;
+  font-weight: $font-weight-base;
+}
+
+.h1--offset{
+  padding-left: 89px;
+}
+
+.clr--secondary{
+  color: $secondary;
+}
+
+section{
+  margin: 128px 0;
+}
+
+p{
+  color: $off-white;
+}
+
+.col--card{
+  @include make-col-ready();
+  @include make-col(4);
+  &:first-of-type{
+    padding-left: 0;
+  }
+  &:last-of-type{
+    padding-right: 0;
+  }
+}
+
+.card-img{
+  height: 560px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-title{
+  margin-top: 16px;
+  padding: 4px 0 0 8px;
+  border-top: 1px solid $off-white;
+  border-left: 1px solid $off-white;
+}
+
+.link--projects-icon{
+  font-size: 2rem;
+  color: $primary;
+  margin-bottom: -8px;
+}
+
+.link--projects{
+  padding-top: 64px;
+  display: flex;
+  align-items: flex-end;
+  color: $white;
+  flex-direction: column;
 }
