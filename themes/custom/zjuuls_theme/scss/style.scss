@@ -13,25 +13,25 @@
 body.toolbar-horizontal{
   &.toolbar-tray-open{
     .menu{
-      top: 79px;
+      top: 35px // 79 - 64;
     }
   }
   .menu{
-    top: 40px;
+    top: -24px // 40 - 64;
   }
 }
 
 .menu{
-  height: 100px;
-  width: 100px;
+  height: 128px;
+  width: 128px;
   position: fixed;
-  right: 0;
-  top: 0;
+  right: -64px;
+  top: -64px;
   background: $primary;
-  border-bottom-left-radius: 100%;
+  border-radius: 50%;
   display: flex;
   z-index: 3;
-  transition: .4s ease-out;
+  transition: .3s ease-out;
   padding: 0 16px;
   flex-direction: column;
 }
@@ -50,7 +50,13 @@ body.toolbar-horizontal{
 .menu.-active{
   height: 100vh;
   width: 100vw;
-  border-bottom-left-radius: 0;
+  border-radius: 0;
+  top: 0;
+  right: 0;
+  .menu-toggle{
+    right: 0;
+    top: 0;
+  }
   .menu-link{
     animation: .4s ease-out forwards fade-in;
     &:nth-child(1){
@@ -80,13 +86,14 @@ body.toolbar-horizontal{
 }
 
 .menu-toggle{
-  padding: 16px;
   font-size: 2rem;
   color: $black;
   position: absolute;
   z-index: 5;
-  right: 0;
-  background: $primary;
+  border-bottom-left-radius: 50%;
+  right: 64px;
+  top: 64px;
+  transition-property: right, top;
 }
 
 .menu-header{
@@ -122,7 +129,6 @@ body {
 
 .section--landing {
   margin: 16px 16px 128px 16px;
-  height: calc(100vh - 80px);
   position: relative;
 }
 
@@ -156,16 +162,18 @@ hr{
   top: -32px;
   left: 0;
   padding-right: 4px;
+  &>a:hover{
+    text-decoration: none;
+  }
 }
 
 .landing-p{
   position: absolute;
-  position: absolute;
-  padding-top: 24px;
+  padding-top: 8px;
 }
 
 .img--landing{
-  height: 100%;
+  height: 640px;
   object-fit: cover;
   width: calc(50vw - 12px);
 }
@@ -179,6 +187,7 @@ hr{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-top: 160px;
 }
 
 h1{
@@ -228,12 +237,21 @@ p{
   &:last-of-type{
     padding-right: 0;
   }
+  &:hover{
+    .mouse-overlay--link{
+      opacity: .75;
+      transform: rotate(0);
+    }
+  }
 }
 
 .card-img{
   height: 560px;
   width: 100%;
   object-fit: cover;
+  &:hover{
+    cursor: none;
+  }
 }
 
 .card-title{
@@ -414,4 +432,54 @@ footer{
 
 .row--intro{
   @include make-row();
+}
+
+.views-element-container{
+  padding: 0;
+}
+
+.row--project{
+  padding: 40px 0;
+  border-top: 1px solid $off-white;
+  &:last-of-type{
+    border-bottom: 1px solid $off-white;
+  }
+  &:hover{
+    .mouse-overlay--img{
+      opacity: 1;
+    }
+    text-decoration: none;
+  }
+}
+
+.row--project-field{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  p{
+    margin-bottom: 0;
+    text-decoration: none;
+  }
+}
+
+.mouse-overlay{
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition-duration: .4s;
+}
+
+.mouse-overlay--img{
+  height: 320px;
+  width: 240px;
+  object-fit: cover;
+  padding: 0;
+  transition-property: opacity;
+}
+
+.mouse-overlay--link{
+  font-size: 80px;
+  transform: rotate(-20deg);
+  transition-timing-function: ease-out;
+  transition-property: opacity, transform;
 }

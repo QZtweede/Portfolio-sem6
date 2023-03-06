@@ -37,9 +37,9 @@ $inverse-color: $white;
 // Links
 //
 // Style anchor elements.
-$link-color: $accent-shade;
+$link-color: unset;
 $link-decoration: none;
-$link-hover-color: $accent-dark;
+$link-hover-color: unset;
 $link-hover-decoration: underline;
 // Comments
 $comment-spacer-x: 1.25em;
