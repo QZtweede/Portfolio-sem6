@@ -1,7 +1,14 @@
 @import "import";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
-//header
+:root{
+  --field: #57c4c2;
+  --lab: #8986c0;
+  --library: #a9cf3c;
+  --workshop: #27c1f0;
+  --showroom: #ffd01c;
+  --other: #d1ccba;
+}
 
 body.toolbar-horizontal{
   &.toolbar-tray-open{
@@ -56,6 +63,9 @@ body.toolbar-horizontal{
       animation-delay: .6s;
     }
   }
+  .menu-header{
+    animation: .1s ease-out forwards fade-in;
+  }
 }
 
 @keyframes fade-in {
@@ -70,23 +80,23 @@ body.toolbar-horizontal{
 }
 
 .menu-toggle{
-  padding: 0 16px;
+  padding: 16px;
   font-size: 2rem;
   color: $black;
   position: absolute;
   z-index: 5;
   right: 0;
+  background: $primary;
 }
 
 .menu-header{
   border-color: $black;
   height: fit-content;
   width: 100%;
+  opacity: 0;
 }
 
 .brand.menu-brand{
-  top: 16px;
-  left: 16px;
   color: $black;
   background: $primary;
 }
@@ -100,6 +110,10 @@ body.toolbar-horizontal{
 .col--menu-img{
   @include make-col(4);
   height: 560px;
+}
+
+.menu-img{
+  display: none;
 }
 
 body {
@@ -127,6 +141,11 @@ header{
 
 hr{
   opacity: .5;
+}
+
+.header--landing{
+  position: relative;
+  margin-left: 16px;
 }
 
 .brand{
@@ -342,3 +361,57 @@ footer{
   @include make-col(6)
 }
 
+.col--date{
+  @include make-col(4);
+  justify-content: flex-end;
+  display: flex;
+}
+
+.col--project-img{
+  @include make-col(8);
+}
+
+.project-img{
+  width: 100%;
+  max-height: 560px;
+  object-fit: cover;
+}
+
+.project-title{
+  padding: 56px 0
+}
+
+.col--body{
+  @include make-col(6);
+  padding-left: 0;
+}
+
+.cmd-method{
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 8px;
+}
+
+.cmd-method--logo{
+  height: 40px;
+  width: 40px;
+  margin-right: 16px;
+}
+
+.col--reflection{
+  @include make-col(6)
+}
+
+.col--step-forward{
+  @include make-col-offset(1);
+  @include make-col(5)
+}
+
+.row--sub-conclusion{
+  @include make-row();
+  padding-top: 40px;
+}
+
+.row--intro{
+  @include make-row();
+}

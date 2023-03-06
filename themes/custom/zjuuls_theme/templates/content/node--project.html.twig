@@ -1,0 +1,116 @@
+<section class="section--landing">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="serif clr--secondary project-title">{{ node.title.value }}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col--date">
+        <h3>
+          12.12.2023
+        </h3>
+      </div>
+      <div class="col--project-img">
+        <img class="project-img" src="{{ node.field_project_img.entity.field_media_image.entity.uri.value | image_style('basic') }}" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row--intro">
+      <div class="col-6">
+        <div class="col p-0">
+          <h3><em>INTRO</em></h3>
+          <hr>
+          {{ node.field_intro.value | raw}}
+        </div>
+      </div>
+      <div class="col-5 offset-1">
+        <div class="col p-0">
+          <h3><em>HOOFDVRAAG</em></h3>
+          <hr>
+          {{ node.field_hoofdvraag.value | raw}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col p-0">
+        <h3><em>CMD METHODS</em></h3>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col--body">
+        {% if node.field_cmd_methods %}
+          {% for paragraph in node.field_cmd_methods %}
+            {% set paragraphType = paragraph.entity.type.value.0.target_id %}
+            {% if paragraph.entity.field_hidden.value == '1' %}
+            {% else %}
+              {% if paragraphType == 'method' %}
+                {% set type = paragraph.entity.field_method.value | split(':', 2)[0] | lower %}
+                {% set method = paragraph.entity.field_method.value | split(':', 2)[1] %}
+                <div class="cmd-method">
+                  <img class="cmd-method--logo" src="/drupal/themes/custom/zjuuls_theme/images/logo-{{ type }}.png" alt="">
+                  <h4 class="m-0" style="color: var(--{{ type }})">{{ method | trim | capitalize}} {% if type == 'other' %}{{ paragraph.entity.field_toelichting.value | raw }}{% endif %}</h4>
+                </div>
+                {% if type != 'other' %}
+                  {{ paragraph.entity.field_toelichting.value | raw }}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+{#   content#}
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col p-0">
+        <h3><em>CONCLUSIE</em></h3>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col--body">
+        {{ node.field_conclusie.value | raw}}
+      </div>
+    </div>
+    <div class="row--sub-conclusion">
+      <div class="col-6">
+        <div class="col p-0">
+          <h3><em>ZELFREFLECTIE</em></h3>
+          <hr>
+          {{ node.field_zelfreflectie.value | raw}}
+        </div>
+      </div>
+      <div class="col-5 offset-1">
+        <div class="col p-0">
+          <h3><em>VERVOLGSTAP</em></h3>
+          <hr>
+          {{ node.field_vervolgstap.value | raw}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col p-0">
+        <h3><em>GERELATEERDE PROJECTEN</em></h3>
+        <hr>
+      </div>
+    </div>
+  </div>
+</section>
