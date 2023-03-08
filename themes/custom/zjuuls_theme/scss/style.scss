@@ -13,27 +13,46 @@
 body.toolbar-horizontal{
   &.toolbar-tray-open{
     .menu{
-      top: 35px // 79 - 64;
+      top: 79px // 79 - 64;
+    }
+    .menu-toggle{
+      top: 87px;
     }
   }
   .menu{
-    top: -24px // 40 - 64;
+    top: 40px //  - 64;
+  }
+  .menu-toggle{
+    top: 48px;
   }
 }
 
 .menu{
-  height: 128px;
-  width: 128px;
+  @include make-col(8);
+  @include make-col-offset(4);
+  height: 100vh;
+  top: 0;
+  right: 0;
   position: fixed;
-  right: -64px;
-  top: -64px;
-  background: $primary;
-  border-radius: 50%;
+  background: $secondary;
   display: flex;
+  justify-content: center;
   z-index: 3;
-  transition: .3s ease-out;
-  padding: 0 16px;
+  transition: transform .4s ease-out;
   flex-direction: column;
+  transform: translate3d(100%, 0, 0);
+}
+
+.menu-socials{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  padding: 8px 16px;
+}
+
+.menu-social{
+  color: $black;
 }
 
 .menu-content{
@@ -41,6 +60,7 @@ body.toolbar-horizontal{
 }
 
 .menu-links{
+  @include make-col-offset(1);
   @include make-col(8);
   display: flex;
   flex-direction: column;
@@ -48,29 +68,26 @@ body.toolbar-horizontal{
 }
 
 .menu.-active{
-  height: 100vh;
-  width: 100vw;
-  border-radius: 0;
-  top: 0;
-  right: 0;
-  .menu-toggle{
-    right: 0;
-    top: 0;
+  transform: translate3d(0, 0, 0);
+  & ~.menu-toggle{
+    color: $black;
   }
-  .menu-link{
-    animation: .4s ease-out forwards fade-in;
-    &:nth-child(1){
-      animation-delay: .4s;
-    }
-    &:nth-child(2){
-      animation-delay: .5s;
-    }
-    &:nth-child(3){
-      animation-delay: .6s;
-    }
+  & ~.menu-overlay{
+    opacity: .8;
   }
-  .menu-header{
-    animation: .1s ease-out forwards fade-in;
+  .menu--main{
+    .nav-item{
+      animation: .4s ease-out forwards fade-in;
+      &:nth-child(1){
+        animation-delay: .4s;
+      }
+      &:nth-child(2){
+        animation-delay: .5s;
+      }
+      &:nth-child(3){
+        animation-delay: .6s;
+      }
+    }
   }
 }
 
@@ -87,40 +104,48 @@ body.toolbar-horizontal{
 
 .menu-toggle{
   font-size: 2rem;
-  color: $black;
-  position: absolute;
+  color: white;
+  position: fixed;
   z-index: 5;
-  border-bottom-left-radius: 50%;
-  right: 64px;
-  top: 64px;
-  transition-property: right, top;
+  right: 8px;
+  top: 4px;
+  transition: color .4s ease-out;
+  cursor: pointer;
 }
 
-.menu-header{
-  border-color: $black;
-  height: fit-content;
-  width: 100%;
-  opacity: 0;
-}
-
-.brand.menu-brand{
-  color: $black;
-  background: $primary;
-}
-
-.menu-link{
-  padding-bottom: 16px;
-  opacity: 0;
+.menu-overlay{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
+  opacity: 0;
+  background: $black;
+  top: 0;
+  z-index: 2;
+  transition: .4s;
 }
 
-.col--menu-img{
-  @include make-col(4);
-  height: 560px;
+.menu--main{
+  .nav-item{
+    font-size: $h1-font-size;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    color: $black;
+    font-size: 6rem;
+    font-family: $font-family-sans-serif-2;
+    line-height: 1;
+  }
+  .nav-link{
+    padding: 0;
+  }
 }
 
-.menu-img{
-  display: none;
+.nav-link{
+  &:hover,
+  &.is-active{
+    text-decoration: underline;
+  }
 }
 
 body {
@@ -245,6 +270,10 @@ p{
   }
 }
 
+.col--card--sm{
+  @include make-col(6)
+}
+
 .card-img{
   height: 560px;
   width: 100%;
@@ -252,6 +281,10 @@ p{
   &:hover{
     cursor: none;
   }
+}
+
+.card-img--sm{
+  height: 240px;
 }
 
 .card-title{
@@ -298,11 +331,18 @@ h2 + p{
   object-fit: cover;
 }
 
-.col--about-img{
+.col--img--withtext{
   @include make-col(4);
   @include make-col-offset(2);
-  padding-right: 0;
+}
+
+.col--img{
+  padding: 0;
   margin-top: -16px;
+}
+
+.col--img--full{
+  @include make-col(8);
 }
 
 .col--center{
@@ -333,6 +373,11 @@ h2 + p{
   font-style: italic;
   position: absolute;
   padding-top: 64px;
+  &:hover{
+    &~.bi-arrow-up-right-circle{
+      transform: translate3d(16px, -8px, 0) rotate(20deg);
+    }
+  }
 }
 
 .bi-arrow-up-right-circle{
@@ -341,6 +386,7 @@ h2 + p{
   margin-left: 880px;
   margin-bottom: 160px;
   color: $secondary;
+  transition: transform .4s ease-out;
 }
 
 .section--link{
@@ -379,6 +425,30 @@ footer{
   @include make-col(6)
 }
 
+.region-footer-first{
+  width: 100%;
+  margin: 0;
+  .navbar-nav{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .nav-item{
+      width: fit-content;
+      font-family: $font-family-sans-serif-2;
+      font-size: $h3-font-size;
+      text-transform: uppercase;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      &:not(:first-of-type):before{
+        content: " — ";
+        padding: 0 16px;
+      }
+    }
+  }
+}
+
 .col--date{
   @include make-col(4);
   justify-content: flex-end;
@@ -387,6 +457,7 @@ footer{
 
 .col--project-img{
   @include make-col(8);
+  padding-right: 0;
 }
 
 .project-img{
@@ -483,3 +554,43 @@ footer{
   transition-timing-function: ease-out;
   transition-property: opacity, transform;
 }
+
+.block,
+.view{
+  display: inherit;
+  padding: 0;
+  position: unset;
+  width: 100%;
+  .content{
+    display: inherit;
+    width: 100%;
+  }
+}
+
+.form-radios{
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: hidden;
+  height: 0;
+  transition: height .4s;
+  margin-top: 40px;
+  &.-active{
+    height: 80px;
+  }
+}
+
+.form-check{
+  width: 320px;
+}
+
+.filter{
+  @include make-col();
+  display: flex;
+  align-items: flex-end;
+}
+
+.filter-toggle{
+  font-size: 2rem;
+  cursor: pointer;
+}
+

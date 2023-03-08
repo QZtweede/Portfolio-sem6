@@ -1,0 +1,17 @@
+<section class="section--paragraph">
+  <div class="container">
+    {% if paragraph.entity.field_title.value %}
+      <div class="row">
+        <div class="col p-0">
+          <h3><em>{{ paragraph.entity.field_title.value }}</em></h3>
+          <hr>
+        </div>
+      </div>
+    {% endif %}
+    <div class="row">
+      <div class="col--body">
+        {{ paragraph.entity.field_body.value | raw }}
+      </div>
+    </div>
+  </div>
+</section>

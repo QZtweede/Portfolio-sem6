@@ -1,0 +1,22 @@
+<section class="section--paragraph">
+  <div class="container">
+    {% if paragraph.entity.field_title.value %}
+      <div class="row">
+        <div class="col p-0">
+          <h3><em>{{ paragraph.entity.field_title.value }}</em></h3>
+          <hr>
+        </div>
+      </div>
+    {% endif %}
+    <div class="row">
+      <div class="col--img col--img--full">
+        <img src="{{ paragraph.entity.field_img_.entity.field_media_image.entity.uri.value | image_style('basic') }}" alt="" class="img--fill">
+      </div>
+    </div>
+    {% if paragraph.entity.field_caption.value %}
+      <div class="row">
+        <p class="p-0"><em>{{ paragraph.entity.field_caption.value }}</em></p>
+      </div>
+    {% endif %}
+  </div>
+</section>
