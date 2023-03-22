@@ -56,6 +56,8 @@
       <path value="$PROJECT_DIR$/vendor/drupal/core-composer-scaffold" />
       <path value="$PROJECT_DIR$/vendor/twbs/bootstrap" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/themes/custom" />
+      <path value="$PROJECT_DIR$/vendor/themes/contrib" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

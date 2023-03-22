@@ -38,7 +38,7 @@ body.toolbar-horizontal{
   display: flex;
   justify-content: center;
   z-index: 3;
-  transition: transform .4s ease-out;
+  transition: transform .4s cubic-bezier(0.85, 0, 0.15, 1);
   flex-direction: column;
   transform: translate3d(100%, 0, 0);
 }
@@ -132,8 +132,9 @@ body.toolbar-horizontal{
     opacity: 0;
     pointer-events: none;
     color: $black;
-    font-size: 6rem;
+    font-size: 8rem;
     font-family: $font-family-sans-serif-2;
+    font-weight: 500;
     line-height: 1;
   }
   .nav-link{
@@ -198,21 +199,27 @@ hr{
 }
 
 .img--landing{
-  height: 640px;
   object-fit: cover;
-  width: calc(50vw - 12px);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -80px;
 }
 
-.col--half{
+.col--landing-img{
   @include make-col-ready();
   @include make-col(6);
+  @include make-col-offset(1);
+  position: relative;
+  height: 640px;
+  z-index: -1;
 }
 
-.col--landing{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding-top: 160px;
+.col--landing-intro{
+  @include make-col-ready();
+  @include make-col(5);
+  padding-top: 80px;
+  flex-direction: row;
 }
 
 h1{
@@ -224,10 +231,6 @@ h1.serif{
   font-style: italic;
 }
 
-h1.sans-serif{
-  font-size: 6rem;
-}
-
 .serif{
   font-family: $headings-font-family;
 }
@@ -237,8 +240,17 @@ h1.sans-serif{
   font-weight: $font-weight-base;
 }
 
+h1.sans-serif{
+  font-weight: 500;
+}
+
 .h1--offset{
   padding-left: 89px;
+}
+
+.landing-title{
+  font-size: 16vw;
+  padding-top: 80px;
 }
 
 .clr--secondary{
@@ -249,8 +261,18 @@ section{
   margin: 128px 0;
 }
 
+.section--project-landing{
+  margin-bottom: 256px;
+}
+
 p{
   color: $off-white;
+}
+
+.card-img--container{
+  height: 560px;
+  overflow-y: hidden;
+  position: relative;
 }
 
 .col--card{
@@ -275,11 +297,15 @@ p{
 }
 
 .card-img{
-  height: 560px;
   width: 100%;
   object-fit: cover;
   &:hover{
     cursor: none;
+  }
+  &.rellax{
+    position: absolute;
+    height: calc(100% + 50px);
+    top: -50px;
   }
 }
 
@@ -308,13 +334,13 @@ p{
   flex-direction: column;
 }
 
-h2.serif{
-  font-size: 6rem;
+h2.serif, h2>span.serif{
+  font-size: 4rem;
   font-style: italic;
 }
 
 h2{
-  line-height: 80px;
+  line-height: 60px;
 }
 
 .col--about{
@@ -329,6 +355,10 @@ h2 + p{
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.img--fill.rellax{
+  margin-top: 40px;
 }
 
 .col--img--withtext{
@@ -361,7 +391,8 @@ h2 + p{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 64px;
+  position: absolute;
+  bottom: 320px;
 }
 
 .bubble-text{
@@ -371,8 +402,7 @@ h2 + p{
 
 .link--big{
   font-style: italic;
-  position: absolute;
-  padding-top: 64px;
+  padding-top: 320px;
   &:hover{
     &~.bi-arrow-up-right-circle{
       transform: translate3d(16px, -8px, 0) rotate(20deg);
@@ -380,17 +410,13 @@ h2 + p{
   }
 }
 
-.bi-arrow-up-right-circle{
+.bi-arrow-up-right-circle {
   font-size: 4em;
   position: absolute;
   margin-left: 880px;
-  margin-bottom: 160px;
+  margin-bottom: -40px;
   color: $secondary;
   transition: transform .4s ease-out;
-}
-
-.section--link{
-  padding-bottom: 128px;
 }
 
 footer{
@@ -451,13 +477,16 @@ footer{
 
 .col--date{
   @include make-col(4);
+  align-items: flex-end;
   justify-content: flex-end;
   display: flex;
 }
 
 .col--project-img{
-  @include make-col(8);
+  @include make-col(10);
+  @include make-col-offset(2);
   padding-right: 0;
+  z-index: -1;
 }
 
 .project-img{
@@ -538,6 +567,7 @@ footer{
   pointer-events: none;
   position: absolute;
   transition-duration: .4s;
+  z-index: 9;
 }
 
 .mouse-overlay--img{
@@ -589,8 +619,15 @@ footer{
   align-items: flex-end;
 }
 
-.filter-toggle{
+.filter-toggle {
   font-size: 2rem;
   cursor: pointer;
 }
 
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+html.lenis {
+  height: auto;
+}

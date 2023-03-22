@@ -1,4 +1,18 @@
 (function($, Drupal) {
+  const lenis = new Lenis()
+
+  lenis.on('scroll', (e) => {
+    console.log(e)
+  })
+
+  function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+  }
+
+  requestAnimationFrame(raf)
+
+  var rellax = new Rellax('.rellax');
   $('.menu-toggle').click(function(){
     $('.menu').toggleClass( '-active' );
   })
@@ -6,6 +20,7 @@
     $('.form-radios').toggleClass( '-active' );
   })
   $(window).mousemove(function( event ) {
+
     var styles_img = {
       "top" : event.pageY - 80,
       "left" : event.pageX - 80
@@ -16,14 +31,5 @@
       "left" : event.pageX - 40
     }
     $('.mouse-overlay--link').css(styles_link)
-    console.log()
-    var styles_interactive = {
-      "transform" : "translate3d(" + (event.pageX - $(window).width() / 2) / 100 + "px, " + (event.pageY - $(window).height() / 2)  / 100 + "px, 0)",
-    }
-    $('.mouse-interactive').css(styles_interactive)
-    var styles_interactive_r = {
-      "transform" : "translate3d(" + (event.pageX - $(window).width() / 2) / 100 * -1 + "px, " + (event.pageY - $(window).height() / 2)  / 100 * -1+ "px, 0)",
-    }
-    $('.mouse-interactive-r').css(styles_interactive_r)
   })
 })(jQuery, Drupal);

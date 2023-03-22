@@ -58,6 +58,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/drupal/core-composer-scaffold" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twbs/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/themes/custom" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/themes/contrib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
