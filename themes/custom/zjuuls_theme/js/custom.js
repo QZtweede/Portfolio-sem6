@@ -1,10 +1,6 @@
 (function($, Drupal) {
   const lenis = new Lenis()
 
-  lenis.on('scroll', (e) => {
-    console.log(e)
-  })
-
   function raf(time) {
     lenis.raf(time)
     requestAnimationFrame(raf)
@@ -18,6 +14,7 @@
   })
   $('.filter-toggle').click(function(){
     $('.form-radios').toggleClass( '-active' );
+    $('.filter-toggle').toggleClass( '-active' );
   })
   $(window).mousemove(function( event ) {
 
@@ -31,5 +28,8 @@
       "left" : event.pageX - 40
     }
     $('.mouse-overlay--link').css(styles_link)
+  })
+  window.addEventListener('load', function (){
+    console.log('done')
   })
 })(jQuery, Drupal);
