@@ -1,15 +1,6 @@
 @import "import";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
-:root{
-  --field: #57c4c2;
-  --lab: #8986c0;
-  --library: #a9cf3c;
-  --workshop: #27c1f0;
-  --showroom: #ffd01c;
-  --other: #d1ccba;
-}
-
 body.toolbar-horizontal{
   &.toolbar-tray-open{
     .menu{
@@ -25,6 +16,10 @@ body.toolbar-horizontal{
   .menu-toggle{
     top: 48px;
   }
+}
+
+li{
+  color: $off-white;
 }
 
 .menu{
@@ -132,9 +127,9 @@ body.toolbar-horizontal{
     opacity: 0;
     pointer-events: none;
     color: $black;
-    font-size: 8rem;
-    font-family: $font-family-sans-serif-2;
-    font-weight: 500;
+    font-size: 6rem;
+    font-family: $font-family-serif;
+    font-style: italic;
     line-height: 1;
   }
   .nav-link{
@@ -393,8 +388,11 @@ h2 + p{
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 320px;
+  bottom: 360px;
 }
+
+@media screen and ( max-height: 560px ) { .col--bubble{bottom: 420px;} }
+
 
 .bubble-text{
   color: $primary;
@@ -403,7 +401,7 @@ h2 + p{
 
 .link--big{
   font-style: italic;
-  padding-top: 320px;
+  margin-top: 320px;
   &:hover{
     &~.bi-arrow-up-right-circle{
       transform: translate3d(16px, -8px, 0) rotate(20deg);
@@ -461,6 +459,7 @@ footer{
     flex-direction: row;
     justify-content: center;
     .nav-item{
+      color: white;
       width: fit-content;
       font-family: $font-family-sans-serif-2;
       font-size: $h3-font-size;

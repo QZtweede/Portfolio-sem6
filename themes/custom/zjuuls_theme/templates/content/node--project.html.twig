@@ -56,8 +56,8 @@
                 {% set type = paragraph.entity.field_method.value | split(':', 2)[0] | lower %}
                 {% set method = paragraph.entity.field_method.value | split(':', 2)[1] %}
                 <div class="cmd-method">
-                  <img class="cmd-method--logo" src="/drupal/themes/custom/zjuuls_theme/images/logo-{{ type }}.png" alt="">
-                  <h4 class="m-0" style="color: var(--{{ type }})">{{ method | trim | capitalize}} {% if type == 'other' %}{{ paragraph.entity.field_toelichting.value | raw }}{% endif %}</h4>
+                  <img class="cmd-method--logo" src="/drupal/themes/custom/zjuuls_theme/images/logo-{{ type | replace({" ":""})}}.png" alt="">
+                  <h4 class="m-0" style="color: var(--{{ type | replace({" ":""})}})">{{ method | trim | capitalize}} {% if type == 'other' %}{{ paragraph.entity.field_toelichting.value | raw | striptags}}{% endif %}</h4>
                 </div>
                 {% if type != 'other' %}
                   {{ paragraph.entity.field_toelichting.value | raw }}
@@ -105,9 +105,11 @@
 <section>
   <div class="container">
     <div class="row">
+      <div class="col p-0">
         <h3><em>GERELATEERDE PROJECTEN</em></h3>
         <hr>
-        {{ views.views_block__projects_block_3 }}
+      </div>
+      {{ views.views_block__projects_block_3 }}
     </div>
   </div>
 </section>
