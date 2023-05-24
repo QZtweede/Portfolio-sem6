@@ -1,18 +1,18 @@
 <section class="section--project-landing">
   <div class="container">
     <div class="row">
-      <div class="col">
-        <h1 class="serif clr--secondary project-title rellax" data-rellax-speed="-3">{{ node.title.value }}</h1>
+      <div class="col-12">
+        <h1 class="serif clr--secondary project-title" data-scroll data-scroll-speed="-2">{{ node.title.value }}</h1>
       </div>
-      <div class="col--date">
-        <h3 class="date">
-          12.12.2023
+      <div class="col--project-type">
+        <h3>
+          {{ node.field_projecttype.entity.name.value }}
         </h3>
       </div>
     </div>
     <div class="row">
       <div class="col--project-img">
-        <img class="project-img rellax" data-rellax-speed="-1" src="{{ node.field_project_img.entity.field_media_image.entity.uri.value | image_style('basic') }}" alt="">
+        <img class="project-img" data-scroll data-scroll-speed="-1" src="{{ node.field_project_img.entity.field_media_image.entity.uri.value | image_style('basic') }}" alt="">
       </div>
     </div>
   </div>

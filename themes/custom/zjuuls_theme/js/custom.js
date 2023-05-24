@@ -1,14 +1,6 @@
+
 (function($, Drupal) {
-  const lenis = new Lenis()
 
-  function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf)
-  }
-
-  requestAnimationFrame(raf)
-
-  var rellax = new Rellax('.rellax');
   $('.menu-toggle').click(function(){
     $('.menu').toggleClass( '-active' );
   })
@@ -24,12 +16,9 @@
     }
     $('.mouse-overlay--img').css(styles_img)
     var styles_link = {
-      "top" : event.pageY - 60,
+      "top" : event.pageY + 1400,
       "left" : event.pageX - 40
     }
     $('.mouse-overlay--link').css(styles_link)
-  })
-  window.addEventListener('load', function (){
-    console.log('done')
   })
 })(jQuery, Drupal);
