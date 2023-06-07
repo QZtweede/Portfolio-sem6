@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <a href="/drupal/projects">< Back to projects</a>
+        <a href="./projects">< Back to projects</a>
       </div>
     </div>
     <div class="row">
@@ -61,7 +61,7 @@
                 {% set type = paragraph.entity.field_method.value | split(':', 2)[0] | lower %}
                 {% set method = paragraph.entity.field_method.value | split(':', 2)[1] %}
                 <div class="cmd-method">
-                  <img class="cmd-method--logo" src="/drupal/themes/custom/zjuuls_theme/images/logo-{{ type | replace({" ":""})}}.png" alt="">
+                  <img class="cmd-method--logo" src="./themes/custom/zjuuls_theme/images/logo-{{ type | replace({" ":""})}}.png" alt="">
                   <h4 class="m-0" style="color: var(--{{ type | replace({" ":""})}})">{{ method | trim | capitalize}} {% if type == 'other' %}{{ paragraph.entity.field_toelichting.value | raw | striptags}}{% endif %}</h4>
                 </div>
                 {% if type != 'other' %}
