@@ -391,7 +391,7 @@ h2 + p{
 .col--bubble{
   @include make-col(4);
   height: 300px;
-  background-image: url("/drupal/themes/custom/zjuuls_theme/images/circle.svg");
+  background-image: url("./themes/custom/zjuuls_theme/images/circle.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -708,7 +708,7 @@ html.lenis {
     left: 0;
     position: absolute;
     pointer-events: none;
-    background-image: url("/drupal/themes/custom/zjuuls_theme/images/btn--overlay.svg");
+    background-image: url("./themes/custom/zjuuls_theme/images/btn--overlay.svg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
