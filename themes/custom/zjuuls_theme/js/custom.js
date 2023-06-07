@@ -8,7 +8,7 @@
     $('.form-radios').toggleClass( '-active' );
     $('.filter-toggle').toggleClass( '-active' );
   })
-  $(window).mousemove(function( event ) {
+  $('body').mousemove(function( event ) {
 
     var styles_img = {
       "top" : event.pageY - 80,
