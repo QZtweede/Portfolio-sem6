@@ -436,7 +436,7 @@ footer{
 
 .copyright,
 .socials{
-  @include make-col(3);
+  @include make-col(2);
 }
 
 .socials{
@@ -455,7 +455,7 @@ footer{
 
 .footer-links{
   justify-content: center;
-  @include make-col(6)
+  @include make-col(8)
 }
 
 .region-footer-first{
@@ -557,6 +557,7 @@ footer{
     .mouse-overlay--img{
       opacity: 1;
     }
+    cursor: none;
     text-decoration: none;
   }
 }

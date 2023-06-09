@@ -8,17 +8,27 @@
     $('.form-radios').toggleClass( '-active' );
     $('.filter-toggle').toggleClass( '-active' );
   })
-  $('body').mousemove(function( event ) {
+  var scroll = new LocomotiveScroll({
+    el: document.querySelector('body'),
+    smooth: true
+  });
 
+  var scrollY = 0
+
+  $('body').mousemove(function( event ) {
+    scroll.on('scroll', (args) => {
+      scrollY = args.scroll.y
+    });
     var styles_img = {
-      "top" : event.pageY - 80,
-      "left" : event.pageX - 80
+      "left" : event.pageX - 80,
+      "top" : event.pageY - 80 + scrollY
     }
     $('.mouse-overlay--img').css(styles_img)
     var styles_link = {
-      "top" : event.pageY + 1400,
-      "left" : event.pageX - 40
+      "left" : event.pageX - 40,
+      "top" : event.pageY - 40 + scrollY
     }
     $('.mouse-overlay--link').css(styles_link)
+    console.log(event.pageY, scrollY)
   })
 })(jQuery, Drupal);
