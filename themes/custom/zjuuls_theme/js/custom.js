@@ -31,4 +31,9 @@
     $('.mouse-overlay--link').css(styles_link)
     console.log(event.pageY, scrollY)
   })
+  window.addEventListener('load', function(){
+    locoScroll.update()
+  });
 })(jQuery, Drupal);
+
+
